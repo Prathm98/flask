@@ -1,13 +1,8 @@
-<html>
-    <head>
-        <title>{{title}}</title>
-    </head>
-    <body>
-        <div>HelloApp: <a href="/">Home</a></div>
-        <hr>
-        <h1> Users of the Application</h1>
-        {% for user in users %}
-            <li> {{user}} </li>
-        {% endfor %}
-    </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1> Users of the Application</h1>
+    {% for user in users %}
+        <li> {{user}} </li>
+    {% endfor %}
+{% endblock %}
