@@ -4,20 +4,17 @@ from flask import redirect, url_for, render_template
 app = Flask(__name__)
 @app.route("/")
 def hello():
-    return render_template("index.html", title="Title Page of Hello App")
+    return render_template("index.html", title="Title Page of Hello App", user=None)
+
+@app.route("/users/")
+def display_users():
+    users = ['John', 'Rosy', 'Jack', 'Sammy', 'Lilly']
+    return render_template('users.html', title='Users', users=users)
 
 
 @app.route("/user/<username>/")
 def hello_user(username):
-    return '''
-<html>
-    <head>
-       <title>User Page</title>
-    </head>
-    <body>
-        <h1>Hello, ''' + username + '''!!!</h1>
-    </body>
-</html>'''
+    return render_template('index.html', title="User Page", user=username)    
 
 @app.route("/user/<username>/<int:age>/")
 def display_age(username, age):
