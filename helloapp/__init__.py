@@ -20,8 +20,9 @@ def hello():
 
 @app.route("/users/")
 def display_users():
-    users = User.query.all()
-    return render_template('users.html', title='Users', users=users)
+    users = User.query.all()    
+    fullnames = [ user.fname + ' ' + user.lname for user in users ]
+    return render_template('users.html', title='Users', users=fullnames)
 
 @app.route("/adduser/", methods=['GET', 'POST'])
 def useradd():
